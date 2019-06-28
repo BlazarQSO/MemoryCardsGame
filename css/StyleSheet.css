@@ -70,16 +70,16 @@ p {
 }
 
 .ground1 {
-    background-image: url(/css/images/poker-casino-min.jpg);
+    background-image: url(/css/images/poker-casino-min.png);
 }
 .ground2 {
-    background-image: url(/css/images/shirt-1-min.jpg);
+    background-image: url(/css/images/shirt-1-min.png);
 }
 .ground3 {
-    background-image: url(/css/images/Kc-1.jpg);
+    background-image: url(/css/images/Kc-1.png);
 }
 .ground4 {
-    background: url(/css/images/shirt-2-min.jpg);    
+    background: url(/css/images/shirt-2-min.png);    
 }
 
 #atttmpts, #opnen, #time {
