@@ -265,7 +265,8 @@
 	user-select: none;
 
 	/* Support: IE <= 11 */
-	overflow: visible;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .ui-button,
@@ -286,7 +287,7 @@
 
 /* no icon support for input elements */
 input.ui-button.ui-button-icon-only {
-	text-indent: 0;
+	text-indent: 0;   
 }
 
 /* button icon element(s) */
@@ -689,12 +690,12 @@ button.ui-button::-moz-focus-inner {
 	position: absolute;
 	top: 0;
 	left: 0;
-	display: none;
+	display: none;    
 }
 .ui-selectmenu-menu .ui-menu {
 	overflow: auto;
 	overflow-x: hidden;
-	padding-bottom: 1px;
+	padding-bottom: 1px;    
 }
 .ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
 	font-size: 1em;
@@ -703,10 +704,10 @@ button.ui-button::-moz-focus-inner {
 	padding: 2px 0.4em;
 	margin: 0.5em 0 0 0;
 	height: auto;
-	border: 0;
+	border: 0;        
 }
 .ui-selectmenu-open {
-	display: block;
+	display: block;    
 }
 .ui-selectmenu-text {
 	display: block;
@@ -714,14 +715,15 @@ button.ui-button::-moz-focus-inner {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-.ui-selectmenu-button.ui-button {
+.ui-selectmenu-button.ui-button {        
 	text-align: left;
 	white-space: nowrap;
-	width: 8.5em;
+	width:80%;
 }
 .ui-selectmenu-icon.ui-icon {
 	float: right;
 	margin-top: 0;
+    margin-right: 1%;
 }
 .ui-slider {
 	position: relative;
