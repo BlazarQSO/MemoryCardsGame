@@ -1,0 +1,28 @@
+﻿html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.aside {
+    background-color:antiquewhite;
+    background-image: url(/css/images/ui-bg_dots-small_100_c07878_2x2.png);
+    width: 15%;
+    height: 100%;
+    float: left;    
+    outline: 2px solid black;
+}
+
+.section {
+    background-color: coral;
+    background-image: url(/css/images/ui-bg_3D-boxes_100_ae9029_12x10.png);
+    width: 85%;
+    height: 730px;
+    height: 100%;
+    float: left;
+    outline: 2px solid black;
+}
+
+.select {
+    width: 120px;
+}
