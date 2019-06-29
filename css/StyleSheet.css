@@ -89,6 +89,10 @@ p {
     font-size: 40px;         
 }
 
+.data {
+    height: 12%;    
+}
+
 .data div {
     float:left;
 }
@@ -126,6 +130,23 @@ button {
         border: 0 !important;
     }
 
+/*---------------------Game Block-----------------------*/
+
+.game-block {
+    border-top: 2px solid black;
+    width: 100%;
+    height: 88%;
+}
+
+.card {
+    float: left;
+    font-size: 0px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+/*-------------------End Game Block---------------------*/
 
 /*-------------Title-------------*/
 

@@ -16,8 +16,8 @@
         <div class="label myTitleLove">            
             <label>Choose type of game</label>
         </div>        
-        <div class="divSel">
-            <select>
+        <div class="divSel" id="name">
+            <select id="selName">
                 <option>Classic</option>
                 <option>Street</option>
                 <option>Quads</option>
@@ -26,8 +26,8 @@
         <div class="label myTitleComic">
             <label>Choose Level</label>
         </div>                
-        <div class="divSel">
-            <select>
+        <div class="divSel" id="lvl">
+            <select id="selLvl">
                 <option>1 (4x4)</option>
                 <option>2 (4x5)</option>
                 <option>3 (4x6)</option>
@@ -39,8 +39,8 @@
             </select>
         </div>
         <br />
-        <button>Start Game</button>        
-        <button>Options</button>        
+        <button id="start">Start Game</button>        
+        <button id="opt">Options</button>        
         <div class="options">
             <div class="ground1"></div>
             <div class="ground2"></div>        
@@ -60,12 +60,16 @@
                 <p id="opnen">0</p>
             </div>
             <div>
-                <label class="myTitleDracula">Game Name Level №1</label>
+                <label class="myTitleDracula" id="lg">Game Name</label>
+                <label class="myTitleDracula" id="ll">Level №1</label>
             </div>
             <div>
                 <p class="fons">Time</p>
                 <p id="time">01:55</p>
             </div>
+        </div>
+        <div class="game-block" id="game">
+
         </div>
     </section>
 </body>
