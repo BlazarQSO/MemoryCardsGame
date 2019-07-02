@@ -12,6 +12,12 @@
 
         });
     
+    $("input")
+        .checkboxradio()
+        .click(function (e) {
+
+        });
+
     // Objects of controls
     var actions = {        
         "start": {

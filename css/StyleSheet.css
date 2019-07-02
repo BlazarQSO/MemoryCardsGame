@@ -148,6 +148,87 @@ button {
 
 /*-------------------End Game Block---------------------*/
 
+/*---------------------Settings-------------------------*/
+
+input[type=radio] {
+    float: left;
+}
+
+.size div div{
+    float: left;
+    width: 60px;
+    height: 90px;        
+}
+
+.img {
+    float: left;
+    width: 60px;
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 6px;
+    
+}
+
+.img:hover {
+    width: 240px;
+    height: 360px;   
+    margin-right: 60px;
+    position: absolute;
+    border-radius: 25px;            
+}
+
+.img-background1, .img-background2, .img-background3,
+.img-background4, .img-background5, .img-background6,
+.img-background7 {    
+    float: left;
+    width: 60px;
+    height: 90px;    
+    border: 1px solid black;    
+}
+
+.img-background1:hover, .img-background2:hover,
+.img-background3:hover, .img-background4:hover,
+.img-background5:hover, .img-background6:hover,
+.img-background7:hover {        
+    width: 240px;
+    height: 360px;        
+    position: absolute;    
+}
+
+.img-background1 {
+    background-image: url(/images/background/boxes1_a06f30_12x10.png);
+}
+.img-background2 {
+    background-image: url(/images/background/boxes2_000000_12x10.png);
+}
+.img-background3 {
+    background-image: url(/images/background/boxes3_2ceceb_12x10.png);
+}
+.img-background4 {
+    background-image: url(/images/background/boxes4_78a6c0_12x10.png);
+}
+.img-background5 {
+    background-image: url(/images/background/diamond_1966f69_10x8.png);
+}
+.img-background6 {
+    background-image: url(/images/background/dots-small1_000000_2x2.png);
+}
+.img-background7 {
+    background-image: url(/images/background/layered-circles1_000000_13x13.png);
+}
+
+.backgound div {
+    float: left;
+}
+
+.clear {
+    clear: left;
+}
+
+/*-------------------End Settings-----------------------*/
+
+
 /*-------------Title-------------*/
 
 /*-----------------------myTitleLove-------------------------*/
