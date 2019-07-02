@@ -31,10 +31,12 @@ p {
 
 .section {
     background-color: coral;
-    background-image: url(/css/images/ui-bg_3D-boxes_100_ae9029_12x10.png);
+    background-image: url(/css//images/ui-bg_3D-boxes_100_ae9029_12x10.png);
+    background-position: center;
+    background-size:auto;
     width: 83.5%;
     height: 730px;
-    height: 100%;
+    height: 100%;    
     float: left;   
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -91,6 +93,7 @@ p {
 
 .data {
     height: 12%;    
+    overflow: hidden;
 }
 
 .data div {
@@ -151,13 +154,47 @@ button {
 /*---------------------Settings-------------------------*/
 
 input[type=radio] {
-    float: left;
+    float: left;    
 }
 
-.size div div{
+.radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    position: relative;
+    background-image: url(/images/background/dots-small1_000000_2x2.png);
+    color: #666;
+    top: 10px;
+    height: 25px;
+    width: 25px;
+    border: 2px solid white;
+    border-radius: 50px;
+    cursor: pointer;
+    margin-right: 7px;
+    outline: none;   
+}
+    .radio:checked::before {
+        position: absolute;
+        font: 22px/1 'Open Sans', sans-serif;
+        left: 5px;
+        color: green;
+        top: -1px;
+        content: '\02143';
+        transform: rotate(40deg);        
+    }
+    .radio:hover {
+        background-image: url(/images/background/dots-small3_f5868b_2x2.png);        
+    }
+    .radio:checked {
+        background-image: url(/images/background/dots-medium_fddfdf_4x4.png);
+    }
+
+
+.size div div {
     float: left;
     width: 60px;
-    height: 90px;        
+    height: 90px;
 }
 
 .img {
@@ -166,8 +203,7 @@ input[type=radio] {
     height: 90px;
     background-size: contain;
     background-repeat: no-repeat;
-    border-radius: 6px;
-    
+    border-radius: 6px;    
 }
 
 .img:hover {
@@ -175,25 +211,69 @@ input[type=radio] {
     height: 360px;   
     margin-right: 60px;
     position: absolute;
+    z-index: 999;
     border-radius: 25px;            
 }
 
-.img-background1, .img-background2, .img-background3,
-.img-background4, .img-background5, .img-background6,
-.img-background7 {    
+.img-background1, .img-background2,
+.img-background3, .img-background4,
+.img-background5, .img-background6,
+.img-background7, .img-background8,
+.img-background9, .img-background10,
+.img-background11, .img-background12,
+.img-background13, .img-background14,
+.img-background15, .img-background16,
+.img-background17, .img-background18{     
     float: left;
     width: 60px;
     height: 90px;    
-    border: 1px solid black;    
+    border: 1px solid black;      
+    background-size: cover;
+}
+
+.img-background1, .img-background2,
+.img-background3, .img-background4,
+.img-background5, .img-background6,
+.img-background7 {
+    background-size: auto;
 }
 
 .img-background1:hover, .img-background2:hover,
 .img-background3:hover, .img-background4:hover,
 .img-background5:hover, .img-background6:hover,
-.img-background7:hover {        
-    width: 240px;
-    height: 360px;        
+.img-background7:hover, .img-background8:hover,
+.img-background9:hover, .img-background10:hover,
+.img-background11:hover, .img-background12:hover,
+.img-background13:hover, .img-background14:hover,
+.img-background15:hover, .img-background16:hover,
+.img-background17:hover{        
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: 400px;        
     position: absolute;    
+    margin-top: -300px;
+    z-index: 999;    
+}
+.img-background18:hover{        
+    background-position: center;
+    background-size: cover;
+    width: 400px;
+    height: 400px;        
+    position: absolute;        
+    margin-top: -300px;    
+    z-index: 999;
+}
+.img-background11:hover, .img-background12:hover,
+.img-background10:hover {
+    margin-left: -300px;
+}
+
+.img-background1:hover, .img-background2:hover,
+.img-background3:hover, .img-background4:hover,
+.img-background5:hover, .img-background6:hover,
+.img-background7:hover {
+    background-size: auto;
 }
 
 .img-background1 {
@@ -217,14 +297,51 @@ input[type=radio] {
 .img-background7 {
     background-image: url(/images/background/layered-circles1_000000_13x13.png);
 }
+.img-background8 {
+    background-image: url(/images/background/1.jpg);
+}
+.img-background9 {
+    background-image: url(/images/background/2.jpg);
+}
+.img-background10 {
+    background-image: url(/images/background/3.jpg);
+}
+.img-background11 {
+    background-image: url(/images/background/4.jpg);
+}
+.img-background12 {
+    background-image: url(/images/background/5.jpg);
+}
+.img-background13 {
+    background-image: url(/images/background/6.jpg);
+}
+.img-background14 {
+    background-image: url(/images/background/7.jpg);
+}
+.img-background15 {
+    background-image: url(/images/background/8.jpg);
+}
+.img-background16 {
+    background-image: url(/images/background/9.jpg);
+}
+.img-background17 {
+    background-image: url(/images/background/10.jpg);
+}
+.img-background18 {
+    background-image: url(/images/background/11.jpg);
+}
 
+.backgound {
+    float: left;    
+}
 .backgound div {
-    float: left;
+    float: left;        
 }
 
 .clear {
     clear: left;
 }
+
 
 /*-------------------End Settings-----------------------*/
 
@@ -248,14 +365,16 @@ input[type=radio] {
 
 /*---------------------myTitleGrave---------------------*/
 .myTitleGrave{
-    font-size: 30px;
+    font-size: 35px;
     color: #202c2d;
     background: none;    
     text-shadow: 0 1px #808d93, -1px 0 #cdd2d5, -1px 2px #808d93, -2px 1px #cdd2d5, 
         -2px 3px #808d93, -3px 2px #cdd2d5, -3px 4px #808d93, -4px 3px #cdd2d5, -4px 5px #808d93, 
         -5px 4px #cdd2d5, -5px 6px #808d93, -6px 5px #cdd2d5, -6px 7px #808d93, -7px 6px #cdd2d5, 
         -7px 8px #808d93, -8px 7px #cdd2d5;        
-    margin-left: 3%;    
+    margin-left: 3%;   
+    margin-bottom: 5px; 
+    margin-top: 5px;
 }
 
 /*---------------------myTitleDracula---------------------*/
@@ -275,7 +394,7 @@ input[type=radio] {
                 21px 21px 1px rgba(0,0,0,0.5), 0px 0px 20px rgba(0,0,0,.2);
     text-align: center;
     font-size: 50px;    
-    border-radius: 8px;   
+    border-radius: 8px;       
 }
 
 

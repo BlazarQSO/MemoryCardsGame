@@ -10,13 +10,7 @@
         .selectmenu()
         .click(function (e) {
 
-        });
-    
-    $("input")
-        .checkboxradio()
-        .click(function (e) {
-
-        });
+        });      
 
     // Objects of controls
     var actions = {        
@@ -185,12 +179,16 @@
     }
 
     function settings() {
-        $.ajax({
-            type: "GET",
-            url: "Settings.html",
-            success: function (data) {                               
-                $("#game").html(data);
-            }
-        })
+        //$.ajax({
+        //    type: "GET",
+        //    url: "Settings.html",
+        //    success: function (data) {                               
+        //        $("#game").html(data);
+        //    }
+        //})
+
+        //$("#game").html(window.open("Settings.html", "_self"));
+
+        $("#game").load("Settings.html");
     }
 });
