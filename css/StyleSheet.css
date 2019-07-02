@@ -82,7 +82,7 @@ p {
     background: url(/css/images/shirt-2-min.png);    
 }
 
-#atttmpts, #opnen, #time {
+#attempts, #open, #time {
     margin-left:20px;
     margin-right:10px;
     font-weight: bold;
@@ -140,7 +140,7 @@ button {
 
 .card {
     float: left;
-    font-size: 0px;
+    font-size: 20px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
