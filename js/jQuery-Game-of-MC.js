@@ -26,19 +26,18 @@
             title: "Options",
             onClickHandler: function (e) {
                 return function () {
-                    
+                    settings();
                 }
             }
         },        
     }
     
-    
-    var second = "0";
-    var intervalHandler;
-
     for (var key in actions) {
         document.getElementById(key).onclick = actions[key].onClickHandler();
     }
+    
+    var second = "0";
+    var intervalHandler;
         
     function startGame() {
         intervalHandler = setInterval(timer, 1000);
@@ -177,5 +176,15 @@
         var time = Number($("#time").text());
         time++;
         $("#time").text(time);
+    }
+
+    function settings() {
+        $.ajax({
+            type: "GET",
+            url: "Settings.html",
+            success: function (data) {                               
+                $("#game").html(data);
+            }
+        })
     }
 });
