@@ -48,7 +48,7 @@
         var lvl = $("#selLvl").val();
 
         var item = -1;
-        var num = 2;        // This's argument imitates a choose one of decks.
+        var num = 4;        // This's argument imitates a choose one of decks.
         var numBack = 1;    // This's argument imitates a choose back.        
         var joker = 0;      // This's agrument for hard game
         var count = Number(lvl[3]) * Number(lvl[5]); // It is a sum all cards in game.
@@ -94,30 +94,32 @@
     }
 
     function random(array, count, num, lvl) {
-        const deckCount = [18, 54, 52, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        const deckCount = [18, 54, 52, 52, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         let numPool = Array(count);
         let allPool;        
 
-        if (lvl[0] <= 3 && deckCount[num - 1] <= 12) {
-            allPool = Array(12);
+        if (num == 5) {
+            allPool = Array(deckCount[num - 1]);
         }
         else
-            if (lvl[0] <= 4 && deckCount[num - 1] <= 16) {
+            if (lvl[0] <= 4) {
                 allPool = Array(16);
             }
             else
-                if (lvl[0] == 5 && deckCount[num - 1] >= 18) {
+                if (lvl[0] == 5) {
                     allPool = Array(18);
                 }
                 else
                     if (lvl[0] >= 6 && deckCount[num - 1] > 18) {
-                        allPool = Array(deckCount[num - 1]);
-                    }
-                    else {                        
-                        allPool = Array(lvl[3] * lvl[5] / 2);
-                    }
-
-         
+                        if (deckCount[num - 1] > 18) {
+                            allPool = Array(deckCount[num - 1]);
+                        }
+                        else {
+                            allPool = Array(lvl[3] * lvl[5] / 2);
+                        }
+                    }                    
+                        
+        
         var temp = 0;
         for (var t = 0; t < allPool.length; t++) {            
             if (temp >= deckCount[num - 1]) {
@@ -126,7 +128,7 @@
             allPool[t] = temp + 1;
             temp++;
         }
-        
+        alert(allPool);
         for (var t = 0; t < count / 2; t++) {
             var rand = allPool[Math.floor(Math.random() * allPool.length)];
             var del = allPool.indexOf(rand);
