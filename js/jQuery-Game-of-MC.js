@@ -40,7 +40,13 @@
     var intervalHandler;
         
     function startGame() {
+        clearInterval(intervalHandler);
+        $("#time").text("0");
+        $("#attempts").text("0");
+        $("#open").text("0");
         intervalHandler = setInterval(timer, 1000);
+
+        $("#game").html("");
 
         var first = "0";
 
@@ -128,7 +134,7 @@
             allPool[t] = temp + 1;
             temp++;
         }
-        alert(allPool);
+        
         for (var t = 0; t < count / 2; t++) {
             var rand = allPool[Math.floor(Math.random() * allPool.length)];
             var del = allPool.indexOf(rand);
@@ -199,22 +205,15 @@
         second = "0";
     }
 
-    function timer() {
-        var time = Number($("#time").text());
+    function timer(time) {
+        time = Number($("#time").text());
         time++;
         $("#time").text(time);
     }
 
-    function settings() {
-        //$.ajax({
-        //    type: "GET",
-        //    url: "Settings.html",
-        //    success: function (data) {                               
-        //        $("#game").html(data);
-        //    }
-        //})
-
-        //$("#game").html(window.open("Settings.html", "_self"));
+    function settings() {      
+        clearInterval(intervalHandler);
+        $("#time").text("0");
 
         $("#game").load("Settings.html");
     }
