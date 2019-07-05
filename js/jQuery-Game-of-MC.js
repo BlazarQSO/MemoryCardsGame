@@ -211,7 +211,7 @@
         $("#time").text(time);
     }
 
-    function settings() {      
+    function settings() {        
         clearInterval(intervalHandler);
         $("#time").text("0");
 
