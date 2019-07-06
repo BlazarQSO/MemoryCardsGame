@@ -44,6 +44,8 @@
     time = 0;
         
     function startGame() {
+        $("audio")[0].play();
+
         clearInterval(intervalHandler);
         $("#time").text("00:00");
         $("#attempts").text("0");
@@ -68,8 +70,7 @@
         $("#lg").text(name);
         $("#ll").text(": Level №" + lvl[0]);
 
-        var input = $("#game");
-        $("head").append("<style>.back{ background-image: url(images/back/d" + numBack + "_back.png); </style>");
+        var input = $("#game");        
 
         var horiz = Math.floor((100 - lvl[5] - 1) / lvl[5]);
         var vert = Math.floor((100 - lvl[3] - 3)/ lvl[3]);        
@@ -88,30 +89,41 @@
                 }).appendTo("#game");
 
                 $("<figure>", {                    
-                    id: "#c" + j + i + item + "b",
+                    id: "c" + j + i + item + "b",
                     "class": "back",
                 }).appendTo("#back" + array[item] + "c" + j + i + item); 
                 $("<figure>", {                    
-                    id: "#c" + j + i + item + "f",
+                    id: "c" + j + i + item + "f",
                     "class": "front",
                 }).appendTo("#back" + array[item] + "c" + j + i + item); 
             }
             input.append("<br />");
         }
 
+        setTimeout(function () { draw(lvl, horiz, vert, array) }, 500);
+    }
+
+    function draw(lvl, horiz, vert, array) {
         var t = -1;
         for (var j = 1; j <= lvl[3]; j++) {
             for (var i = 1; i <= lvl[5]; i++) {
                 t++;
-                var temp = $("#back" + array[t] + "c" + j + i + t); 
+                var temp = $("#back" + array[t] + "c" + j + i + t);
                 temp.css("margin-left", "1%");
                 temp.css("margin-bottom", "0.5%");
                 temp.css("width", horiz + "%");
                 temp.css("height", vert + "%");
-                temp.css("border", "2px solid black");                
-                temp.css("background-size", size);
+
+                var temp2 = $("#c" + j + i + t + "b");                
+
+                temp2.css("background-image", "url(images/back/d" + numBack + "_back.png)");
+                temp2.css("background-size", size);
+                
+                var temp2 = $("#c" + j + i + t + "f");
+                temp2.css("background-size", size);
+                temp2.css("border-radius", "15px");
             }
-        }        
+        }
     }
 
     function random(array, count, lvl) {
@@ -180,6 +192,8 @@
         }
 
         if (first == "0") {
+            $("audio")[2].play();
+
             first = card;            
                                          
             var t = document.getElementsByClassName("front");
@@ -194,7 +208,7 @@
 
             return first;
         }
-        else {
+        else {          
             var rank = Number($("#attempts").text());
             rank++;
             $("#attempts").text(rank);
@@ -204,11 +218,13 @@
             elem.classList.toggle("flip");
 
             if (card != first) {
+                $("audio")[4].play();
                 second = "1";
                 setTimeout(function () { back(elem, numBack) }, 1000);                
                 return first;
             }
             else {
+                $("audio")[3].play();
                 var rank = Number($("#open").text());
                 rank++;
                 $("#open").text(rank);
@@ -218,6 +234,7 @@
                 if (count / 2 == rank) {
                     clearInterval(intervalHandler);
                     time = 0;
+                    $("audio")[1].play();
                 }
                 return first;
             }
@@ -252,7 +269,9 @@
                     }
     }
 
-    function settings() {        
+    function settings() {
+        $("audio")[5].play();
+        
         clearInterval(intervalHandler);
         time = 0;
         $("#time").text("00:00");
