@@ -37,7 +37,10 @@
     }
     
     var second = "0";
+    size = "cover";
+    numBack = 1;            // This's argument imitates a choose back.      
     var intervalHandler;
+    num = 1;                // This's argument imitates a choose one of decks.        
         
     function startGame() {
         clearInterval(intervalHandler);
@@ -48,20 +51,18 @@
 
         $("#game").html("");
 
-        var first = "0";
+        var first = "0";        
 
         var name = $("#selName").val();
         var lvl = $("#selLvl").val();
 
-        var item = -1;
-        var num = 4;        // This's argument imitates a choose one of decks.
-        var numBack = 1;    // This's argument imitates a choose back.        
-        var joker = 0;      // This's agrument for hard game
+        var item = -1;              
+        var joker = 0;     // This's agrument for hard game
         var count = Number(lvl[3]) * Number(lvl[5]); // It is a sum all cards in game.
         
         var array = Array(count);
 
-        array = random(array, count, num, lvl);               
+        array = random(array, count, lvl);               
 
         $("#lg").text(name);
         $("#ll").text(": Level №" + lvl[0]);
@@ -79,7 +80,7 @@
                     id: "c" + j + i,                    
                     "class": "card",
                     click: function () {
-                        first = game($(this), num, numBack, first, count);
+                        first = game($(this), numBack, first, count);
                     }
                 }).appendTo("#game");
             }
@@ -95,15 +96,16 @@
                 temp.css("height", vert + "%");
                 temp.css("border", "2px solid black");
                 temp.css("background-image", "url(images/back/d" + numBack + "_back.png)");
+                temp.css("background-size", size);
             }
         }        
     }
 
-    function random(array, count, num, lvl) {
-        const deckCount = [18, 54, 52, 52, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    function random(array, count, lvl) {
+        const deckCount = [18, 54, 52, 52, 50, 16, 16, 16, 12, 16, 12, 54];
         let numPool = Array(count);
         let allPool;        
-
+        
         if (num == 5) {
             allPool = Array(deckCount[num - 1]);
         }
@@ -116,7 +118,7 @@
                     allPool = Array(18);
                 }
                 else
-                    if (lvl[0] >= 6 && deckCount[num - 1] > 18) {
+                    if (lvl[0] >= 6) {
                         if (deckCount[num - 1] > 18) {
                             allPool = Array(deckCount[num - 1]);
                         }
@@ -153,7 +155,7 @@
         return array;
     }
 
-    function game(elem, num, numBack, first, count) {
+    function game(elem, numBack, first, count) {
         var temp = elem.text();
         var card = temp.slice(4, temp.length);
         temp = temp.slice(0, 4);
@@ -215,6 +217,6 @@
         clearInterval(intervalHandler);
         $("#time").text("0");
 
-        $("#game").load("Settings.html");
+        $("#game").load("settings.html");
     }
 });
