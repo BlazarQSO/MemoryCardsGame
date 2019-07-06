@@ -40,11 +40,12 @@
     size = "cover";
     numBack = 1;            // This's argument imitates a choose back.      
     var intervalHandler;
-    num = 1;                // This's argument imitates a choose one of decks.        
+    num = 1;                // This's argument imitates a choose one of decks.       
+    time = 0;
         
     function startGame() {
         clearInterval(intervalHandler);
-        $("#time").text("0");
+        $("#time").text("00:00");
         $("#attempts").text("0");
         $("#open").text("0");
         intervalHandler = setInterval(timer, 1000);
@@ -57,8 +58,8 @@
         var lvl = $("#selLvl").val();
 
         var item = -1;              
-        var joker = 0;     // This's agrument for hard game
-        var count = Number(lvl[3]) * Number(lvl[5]); // It is a sum all cards in game.
+        var joker = 0;                                  // This's agrument for hard game
+        var count = Number(lvl[3]) * Number(lvl[5]);    // It is a sum all cards in game.
         
         var array = Array(count);
 
@@ -68,7 +69,8 @@
         $("#ll").text(": Level №" + lvl[0]);
 
         var input = $("#game");
-        
+        $("head").append("<style>.back{ background-image: url(images/back/d" + numBack + "_back.png); </style>");
+
         var horiz = Math.floor((100 - lvl[5] - 1) / lvl[5]);
         var vert = Math.floor((100 - lvl[3] - 3)/ lvl[3]);        
 
@@ -76,26 +78,37 @@
             for (var i = 1; i <= lvl[5]; i++) {
                 item++;
                 $("<div/>", {
-                    text: "back" + array[item],
-                    id: "c" + j + i,                    
+                    name: "back" + array[item],
+                    id: "back" + array[item] + "c" + j + i + item,  
                     "class": "card",
                     click: function () {
-                        first = game($(this), numBack, first, count);
+                        
+                        first = game(this, numBack, first, count);
                     }
                 }).appendTo("#game");
+
+                $("<figure>", {                    
+                    id: "#c" + j + i + item + "b",
+                    "class": "back",
+                }).appendTo("#back" + array[item] + "c" + j + i + item); 
+                $("<figure>", {                    
+                    id: "#c" + j + i + item + "f",
+                    "class": "front",
+                }).appendTo("#back" + array[item] + "c" + j + i + item); 
             }
             input.append("<br />");
         }
 
+        var t = -1;
         for (var j = 1; j <= lvl[3]; j++) {
             for (var i = 1; i <= lvl[5]; i++) {
-                var temp = $("#c" + j + i);
+                t++;
+                var temp = $("#back" + array[t] + "c" + j + i + t); 
                 temp.css("margin-left", "1%");
                 temp.css("margin-bottom", "0.5%");
                 temp.css("width", horiz + "%");
                 temp.css("height", vert + "%");
-                temp.css("border", "2px solid black");
-                temp.css("background-image", "url(images/back/d" + numBack + "_back.png)");
+                temp.css("border", "2px solid black");                
                 temp.css("background-size", size);
             }
         }        
@@ -125,8 +138,7 @@
                         else {
                             allPool = Array(lvl[3] * lvl[5] / 2);
                         }
-                    }                    
-                        
+                    }      
         
         var temp = 0;
         for (var t = 0; t < allPool.length; t++) {            
@@ -153,21 +165,28 @@
         }
 
         return array;
-    }
+    }    
 
     function game(elem, numBack, first, count) {
-        var temp = elem.text();
-        var card = temp.slice(4, temp.length);
-        temp = temp.slice(0, 4);
-
+        
+        var temp = elem.id.slice(0, 4);
+        var len = elem.id.slice(4, elem.id.length);
+        var index = len.indexOf("c");
+        var card = len.slice(0, index);
+        var str = len.slice(3 + card.length, len.length);
+                
         if (temp == "good" || second != "0") {
             return first;
         }
 
         if (first == "0") {
-            first = card;
-            elem.css("background-image", "url(/images/cards/deck" + num + "/" + card + ".png)");
-            elem.text("good");
+            first = card;            
+                                         
+            var t = document.getElementsByClassName("front");
+            t[str].style.backgroundImage = "url(/images/cards/deck" + num + "/" + card + ".png)";
+            elem.classList.toggle("flip");
+            
+            elem.id = "good" + len;
             
             var rank = Number($("#attempts").text());
             rank++;
@@ -179,8 +198,10 @@
             var rank = Number($("#attempts").text());
             rank++;
             $("#attempts").text(rank);
-
-            elem.css("background-image", "url(/images/cards/deck" + num + "/" + card + ".png)");
+                        
+            var t = document.getElementsByClassName("front");
+            t[str].style.backgroundImage = "url(/images/cards/deck" + num + "/" + card + ".png)";
+            elem.classList.toggle("flip");
 
             if (card != first) {
                 second = "1";
@@ -191,11 +212,12 @@
                 var rank = Number($("#open").text());
                 rank++;
                 $("#open").text(rank);
-                elem.text("good");
+                elem.id = "good" + len;
                 first = "0";
 
                 if (count / 2 == rank) {
                     clearInterval(intervalHandler);
+                    time = 0;
                 }
                 return first;
             }
@@ -203,20 +225,37 @@
     }
 
     function back(elem, numBack) {        
-        elem.css("background-image", "url(images/back/d" + numBack + "_back.png)");        
+        elem.classList.toggle("flip");
         second = "0";
-    }
+    }           
 
-    function timer(time) {
-        time = Number($("#time").text());
+    function timer() {
         time++;
-        $("#time").text(time);
+        
+        var sec = time % 60;
+        var min = (time - sec) / 60;                              
+
+        if (sec < 10 && min < 10) {
+            $("#time").text("0" + min + ":0" + sec);
+        }
+        else
+            if (sec > 9 && min < 10) {
+                $("#time").text("0" + min + ":" + sec);
+            }
+            else
+                if (sec < 10 && min > 9) {
+                    $("#time").text(min + ":0" + sec);
+                }
+                else
+                    if (sec > 9 && min > 9) {
+                        $("#time").text(min + ":" + sec);
+                    }
     }
 
     function settings() {        
         clearInterval(intervalHandler);
-        $("#time").text("0");
-
+        time = 0;
+        $("#time").text("00:00");
         $("#game").load("settings.html");
     }
 });

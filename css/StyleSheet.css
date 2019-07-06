@@ -388,6 +388,41 @@ input[type=radio] {
 
 /*-------------------End Settings-----------------------*/
 
+/*--------------------Rotate 3D-------------------------*/
+
+.card { /* поворачивать будем общий контейнер */
+    float: left;
+
+    border: 3px solid black;
+    transition: transform 0.5s;   
+    transform-style: preserve-3d; 
+}
+
+    .card.flip {
+        transform: rotateY( 180deg );
+    }
+
+figure {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+    backface-visibility: hidden; 
+}
+
+.back {
+    top: -20px;
+    left: -40px;
+    
+    background-size: cover;
+}
+
+.front {
+    top: -20px;
+    left: -40px;
+    background-size: cover;
+    transform: rotateY( 180deg ); 
+}
 
 /*-------------Title-------------*/
 
