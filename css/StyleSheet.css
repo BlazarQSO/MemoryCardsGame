@@ -430,6 +430,100 @@ figure {
     filter: contrast(112%);
 }
 
+/*----------------------Flip Switch--------------------------*/
+.fswitch {
+    margin-top: 15px;
+    margin-left: 8%;
+    float:left;
+}
+
+.memory {    
+    margin-top: 15px;    
+    float:left;
+}
+.flipswitch {
+  position: relative;
+  width: 84px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+}
+.flipswitch input[type=checkbox] {
+  display: none;
+}
+.flipswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 19px;
+}
+.flipswitch-inner {
+  width: 200%;
+  margin-left: -100%;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  -moz-transition: margin 0.3s ease-in 0s;
+  -ms-transition: margin 0.3s ease-in 0s;
+  -o-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s;
+}
+.flipswitch-inner:before, .flipswitch-inner:after {
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 18px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.flipswitch-inner:before {
+  content: "ON";
+  padding-left: 8px;
+  background: url(/css/images/ui-bg_layered-circles_100_7298cd_13x13.png);
+  color: #8e4d4d;
+}
+.flipswitch-inner:after {
+  content: "OFF";
+  padding-right: 8px;
+  background-color: #EBEBEB;
+  background: url(/css/images/ui-bg_layered-circles_100_eb1b24_13x13.png);
+  color: black;
+  text-align: right;
+}
+.flipswitch-switch {
+  width: 41px;
+  margin: -5.5px;
+  background: url(/css/images/ui-bg_3D-boxes_100_bb7f7f_12x10.png);
+  border: 1px solid black;
+  border-radius: 19px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 51px;
+  -webkit-transition: all 0.3s ease-in 0s;
+  -moz-transition: all 0.3s ease-in 0s;
+  -ms-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+.flipswitch-switch:hover{
+    background: url(/css/images/ui-bg_carbon-fiber_100_eae5a0_8x9.png);
+}
+.flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
+  margin-left: 0;
+}
+.flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
+  right: 0;
+}
+
+
+/*--------------------End Flip Switch------------------------*/
+
 /*-------------Title-------------*/
 
 /*-----------------------myTitleLove-------------------------*/

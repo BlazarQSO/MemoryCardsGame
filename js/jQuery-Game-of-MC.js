@@ -36,6 +36,7 @@
         document.getElementById(key).onclick = actions[key].onClickHandler();
     }
     
+    var memory = 1;
     var second = "0";
     size = "cover";
     numBack = 1;            // This's argument imitates a choose back.      
@@ -43,13 +44,24 @@
     num = 1;                // This's argument imitates a choose one of decks.       
     time = 0;
         
+    function flipswitch() {        
+        if ($("#fs").prop("checked")) {
+            memory = 1            
+        } else {
+            memory = 0;            
+        }
+    }
+
     function startGame() {
         $("audio")[0].play();
-
+        flipswitch();
         clearInterval(intervalHandler);
+
         $("#time").text("00:00");
         $("#attempts").text("0");
         $("#open").text("0");
+
+        time = 0;
         intervalHandler = setInterval(timer, 1000);
 
         $("#game").html("");
@@ -82,8 +94,7 @@
                     name: "back" + array[item],
                     id: "back" + array[item] + "c" + j + i + item,  
                     "class": "card",
-                    click: function () {
-                        
+                    click: function () {                        
                         first = game(this, numBack, first, count);
                     }
                 }).appendTo("#game");
@@ -99,10 +110,16 @@
             }
             input.append("<br />");
         }
-
+                
         setTimeout(function () { draw(lvl, horiz, vert, array) }, 500);
+        if (memory == 1) {
+            time = -10;
+            $("#time").text("10");            
+            setTimeout(function () { memory = 0;}, 600);
+            setTimeout(function () { draw(lvl, horiz, vert, array) }, 10000);
+        }
     }
-
+    
     function draw(lvl, horiz, vert, array) {
         var t = -1;
         for (var j = 1; j <= lvl[3]; j++) {
@@ -114,12 +131,17 @@
                 temp.css("width", horiz + "%");
                 temp.css("height", vert + "%");
 
-                var temp2 = $("#c" + j + i + t + "b");                
-
-                temp2.css("background-image", "url(images/back/d" + numBack + "_back.png)");
+                var temp2 = $("#c" + j + i + t + "b");
+                if (memory == 0) {
+                    temp2.css("background-image", "url(images/back/d" + numBack + "_back.png)");
+                }
+                else {
+                    temp2.css("background-image", "url(images/cards/deck" + num + "/" + array[t] + ".png)");
+                }
                 temp2.css("background-size", size);
                 
-                var temp2 = $("#c" + j + i + t + "f");
+                
+                var temp2 = $("#c" + j + i + t + "f");                             
                 temp2.css("background-size", size);
                 temp2.css("border-radius", "15px");
             }
@@ -247,6 +269,15 @@
     }           
 
     function timer() {
+        if (time < -1) {
+            var timek = time * (-1) - 1;
+            $("#time").text(timek);
+            time++;            
+            return;
+        } else if (time == -1) {
+            $("#time").text("00:00");
+        }
+
         time++;
         
         var sec = time % 60;
