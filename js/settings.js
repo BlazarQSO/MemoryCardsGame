@@ -16,7 +16,7 @@
 
     var rad = $("input[name=radio-3]:checked").val();
     if (rad != undefined) {
-        $("section").css("background-image", "url(images/background/" + rad + ".png");
+        $("section").css("background-image", "url(images/background/" + rad + ".png");        
         if (isNumber(rad)) {
             $("section").css("background-size", "cover");
         } else {

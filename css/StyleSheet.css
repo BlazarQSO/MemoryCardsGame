@@ -12,7 +12,7 @@ p {
 
 .aside {
     background-color:antiquewhite;
-    background-image: url(/css/images/ui-bg_dots-small_100_c07878_2x2.png);
+    background-image: url(../css/images/ui-bg_dots-small_100_c07878_2x2.png);
     width: 15%;
     height: 100%;
     float: left;        
@@ -23,15 +23,15 @@ p {
 }
 
 .border {
-    background-image: url(/images/background/boxes2_000000_12x10.png);    
+    background-image: url(../images/background/boxes2_000000_12x10.png);    
     float:left;
     height: 100%;
     width: 1.5%;
 }
 
 .section {
-    background-color: coral;
-    background-image: url(/css//images/ui-bg_3D-boxes_100_ae9029_12x10.png);
+    background-color: antiquewhite;
+    background-image: url(../css/images/ui-bg_3D-boxes_100_ae9029_12x10.png);
     background-position: center;
     background-size:auto;
     width: 83.5%;
@@ -46,8 +46,8 @@ p {
 .label {
     margin-left: 0%;
     margin-right: 3%;
-    margin-top: 50px;
-    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -72,25 +72,25 @@ p {
 }
 
 .ground1 {
-    background-image: url(/images/cards/deck1/3.png);
+    background-image: url(../images/cards/deck1/3.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 .ground2 {
-    background-image: url(/images/back/d5_back.png);    
+    background-image: url(../images/back/d5_back.png);    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 .ground3 {
-    background-image: url(/images/cards/deck2/12.png);
+    background-image: url(../images/cards/deck2/12.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
-.ground4 {
-    background: url(/images/background/6.png);        
+.ground4 {        
+    background-image: url(../images/background/6.png);    
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -191,7 +191,7 @@ input[type=radio] {
     appearance: none;
     display: inline-block;
     position: relative;
-    background-image: url(/images/background/dots-small1_000000_2x2.png);
+    background-image: url(../images/background/dots-small1_000000_2x2.png);
     color: #666;
     top: 1px;
     height: 25px;
@@ -212,10 +212,10 @@ input[type=radio] {
         transform: rotate(40deg);        
     }
     .radio:hover {
-        background-image: url(/images/background/dots-small3_f5868b_2x2.png);        
+        background-image: url(../images/background/dots-small3_f5868b_2x2.png);        
     }
     .radio:checked {
-        background-image: url(/images/background/dots-medium_fddfdf_4x4.png);
+        background-image: url(../images/background/dots-medium_fddfdf_4x4.png);
     }
 
 
@@ -320,58 +320,58 @@ input[type=radio] {
 }
 
 .img-background1 {
-    background-image: url(/images/background/boxes1_a06f30_12x10.png);
+    background-image: url(../images/background/boxes1_a06f30_12x10.png);
 }
 .img-background2 {
-    background-image: url(/images/background/boxes2_000000_12x10.png);
+    background-image: url(../images/background/boxes2_000000_12x10.png);
 }
 .img-background3 {
-    background-image: url(/images/background/boxes3_2ceceb_12x10.png);
+    background-image: url(../images/background/boxes3_2ceceb_12x10.png);
 }
 .img-background4 {
-    background-image: url(/images/background/boxes4_78a6c0_12x10.png);
+    background-image: url(../images/background/boxes4_78a6c0_12x10.png);
 }
 .img-background5 {
-    background-image: url(/images/background/diamond_1966f69_10x8.png);
+    background-image: url(../images/background/diamond_1966f69_10x8.png);
 }
 .img-background6 {
-    background-image: url(/images/background/dots-small1_000000_2x2.png);
+    background-image: url(../images/background/dots-small1_000000_2x2.png);
 }
 .img-background7 {
-    background-image: url(/images/background/layered-circles1_000000_13x13.png);
+    background-image: url(../images/background/layered-circles1_000000_13x13.png);
 }
 .img-background8 {
-    background-image: url(/images/background/1.png);
+    background-image: url(../images/background/1.png);
 }
 .img-background9 {
-    background-image: url(/images/background/2.png);
+    background-image: url(../images/background/2.png);
 }
 .img-background10 {
-    background-image: url(/images/background/3.png);
+    background-image: url(../images/background/3.png);
 }
 .img-background11 {
-    background-image: url(/images/background/4.png);
+    background-image: url(../images/background/4.png);
 }
 .img-background12 {
-    background-image: url(/images/background/5.png);
+    background-image: url(../images/background/5.png);
 }
 .img-background13 {
-    background-image: url(/images/background/6.png);
+    background-image: url(../images/background/6.png);
 }
 .img-background14 {
-    background-image: url(/images/background/7.png);
+    background-image: url(../images/background/7.png);
 }
 .img-background15 {
-    background-image: url(/images/background/8.png);
+    background-image: url(../images/background/8.png);
 }
 .img-background16 {
-    background-image: url(/images/background/9.png);
+    background-image: url(../images/background/9.png);
 }
 .img-background17 {
-    background-image: url(/images/background/10.png);
+    background-image: url(../images/background/10.png);
 }
 .img-background18 {
-    background-image: url(/images/background/11.png);
+    background-image: url(../images/background/11.png);
 }
 
 .backgound {
@@ -484,21 +484,21 @@ figure {
 .flipswitch-inner:before {
   content: "ON";
   padding-left: 8px;
-  background: url(/css/images/ui-bg_layered-circles_100_7298cd_13x13.png);
+  background: url(../css/images/ui-bg_layered-circles_100_7298cd_13x13.png);
   color: #8e4d4d;
 }
 .flipswitch-inner:after {
   content: "OFF";
   padding-right: 8px;
   background-color: #EBEBEB;
-  background: url(/css/images/ui-bg_layered-circles_100_eb1b24_13x13.png);
+  background: url(../css/images/ui-bg_layered-circles_100_eb1b24_13x13.png);
   color: black;
   text-align: right;
 }
 .flipswitch-switch {
   width: 41px;
   margin: -5.5px;
-  background: url(/css/images/ui-bg_3D-boxes_100_bb7f7f_12x10.png);
+  background: url(../css/images/ui-bg_3D-boxes_100_bb7f7f_12x10.png);
   border: 1px solid black;
   border-radius: 19px;
   position: absolute;
@@ -512,7 +512,7 @@ figure {
   transition: all 0.3s ease-in 0s;
 }
 .flipswitch-switch:hover{
-    background: url(/css/images/ui-bg_carbon-fiber_100_eae5a0_8x9.png);
+    background: url(../css/images/ui-bg_carbon-fiber_100_eae5a0_8x9.png);
 }
 .flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
   margin-left: 0;
@@ -578,7 +578,7 @@ figure {
 
 /*---------------------myTitleComic---------------------*/
 .myTitleComic{
-    font-size: 40px;
+    font-size: 35px;
     color: #bc2e1e;
     background: none;
     text-shadow: 0 1px 0px #378ab4, 1px 0 0px #5dabcd, 1px 2px 1px #378ab4, 

@@ -62,9 +62,21 @@
         flipswitch();
         clearInterval(intervalHandler);
 
+        nameGame = $("#setName").val();
+        var lvl = $("#setLvl").val();
+
         $("#time").text("00:00");
         $("#attempts").text("0");
         $("#open").text("0");
+        
+        if (nameGame == "Quads") {
+            $("#open-name").text("Open quads");
+        } else
+            if (nameGame == "Street") {
+                $("#open-name").text("Open street");
+            } else {
+                $("#open-name").text("Open pairs");
+            }
 
         time = 0;
         rate = 1;
@@ -73,15 +85,6 @@
         $("#game").html("");
 
         var first = "0";        
-        
-        nameGame = $("#setName").val();
-        var lvl = $("#setLvl").val();
-                       
-
-        if (nameGame == "Quads") {
-        }
-        else {            
-        }
 
         var item = -1;                                               
         var count = Number(lvl[3]) * Number(lvl[5]);    // It is a sum all cards in game.
@@ -348,7 +351,7 @@
             first = card;            
                                          
             var t = document.getElementsByClassName("front");
-            t[str].style.backgroundImage = "url(/images/cards/deck" + num + "/" + card + ".png)";
+            t[str].style.backgroundImage = "url(images/cards/deck" + num + "/" + card + ".png)";
             elem.classList.toggle("flip");
             
             if (nameGame == "Street" && (card - 17) % 9 != 0) {
@@ -369,7 +372,7 @@
             $("#attempts").text(rank);
                         
             var t = document.getElementsByClassName("front");
-            t[str].style.backgroundImage = "url(/images/cards/deck" + num + "/" + card + ".png)";
+            t[str].style.backgroundImage = "url(images/cards/deck" + num + "/" + card + ".png)";
             elem.classList.toggle("flip");
 
             if (nameGame == "Quads") {
@@ -527,11 +530,11 @@
 
     function settings() {
         $("audio")[5].play();
-        
+
         clearInterval(intervalHandler);
         time = 0;
         $("#time").text("00:00");
+
         $("#game").load("Settings.html");
-        // Opera and Chrome don't download.
     }
 });

@@ -4,8 +4,8 @@
     <title></title>
     <meta charset="utf-8" />
     <link href="/css/images/icon.png" rel="shortcut icon" type="image/png" />
-    <link href="css/jquery-ui.css" rel="stylesheet" />
-    <link href="css/StyleSheet.css" rel="stylesheet" />
+    <link href="css/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="css/StyleSheet.css" rel="stylesheet" type="text/css"/>
     <script src="js/jquery-3.4.1.js"></script>
     <script src="js/jquery.js"></script>
     <script src="js/jquery-ui.min.js"></script>
@@ -68,7 +68,7 @@
                 <p id="attempts">0</p>
             </div>
             <div>
-                <p class="fons">Open pairs</p>
+                <p class="fons" id="open-name">Open pairs</p>
                 <p id="open">0</p>
             </div>
             <div>
@@ -81,26 +81,26 @@
             </div>
         </div>
         <div class="game-block" id="game">
-
+            <script src="Settings.js"></script>
         </div>
     </section>
     <audio>
-        <source src="/audio/start.mp3" />
+        <source src="audio/start.mp3" />
     </audio>
     <audio>
-        <source src="/audio/end.mp3" />
+        <source src="audio/end.mp3" />
     </audio>
     <audio>
-        <source src="/audio/rotate_card1.mp3" />
+        <source src="audio/rotate_card1.mp3" />
     </audio>
     <audio>
-        <source src="/audio/rotate_card2.mp3" />
+        <source src="audio/rotate_card2.mp3" />
     </audio>
     <audio>
-        <source src="/audio/radio.mp3" />
+        <source src="audio/radio.mp3" />
     </audio>
     <audio>
-        <source src="/audio/button.mp3" />
+        <source src="audio/button.mp3" />
     </audio>
 </body>
 </html>
