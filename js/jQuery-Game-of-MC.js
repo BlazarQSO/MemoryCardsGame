@@ -83,8 +83,7 @@
         else {            
         }
 
-        var item = -1;              
-        var joker = 0;                                  // This's agrument for hard game
+        var item = -1;                                               
         var count = Number(lvl[3]) * Number(lvl[5]);    // It is a sum all cards in game.
         
         var array = Array(count);
@@ -139,7 +138,7 @@
         var t = -1;
         for (var j = 1; j <= lvl[3]; j++) {
             for (var i = 1; i <= lvl[5]; i++) {
-                if (nameGame == "Quads" && j == lvl[3] && i == (lvl[5] - 1)) {
+                if (nameGame == "Quads" && j == lvl[3] && i == (lvl[5] - 1) && (lvl[0] == 4 || lvl[0] == 6)) {
                     return;
                 }
                 t++;
@@ -266,11 +265,17 @@
                     var arrTemp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
                     53, 54, 55, 56, 25, 34, 43, 52, 24, 33, 42, 51, 23, 32, 41, 50, 22, 31, 40, 49,
                     21, 30, 39, 48, 20, 29, 38, 47, 19, 28, 37, 46, 18, 27, 36, 45, 17, 26, 35, 44];
-                    for (var t = 0; t < allPool.length; t++) {                        
-                        allPool[t] = arrTemp[t];
+                    if (num != 5) {
+                        for (var t = 0; t < allPool.length; t++) {
+                            allPool[t] = arrTemp[t];
+                        }
+                    } else {
+                        for (var t = 0; t < allPool.length; t++) {
+                            allPool[t] = t + 1;
+                        }
                     }
                 }
-                alert(allPool);
+                
                 for (var t = 0; t < count; t++) {
                     var rand = allPool[Math.floor(Math.random() * allPool.length)];
                     var del = allPool.indexOf(rand);
@@ -278,6 +283,46 @@
                     array[t] = rand;                    
                 }
             }
+            else
+                if (nameGame == "Street") {
+                    if (num < 2 || num > 6 || num == 4) {
+                        num = 3;
+                    }
+                    allPool = Array(count);
+                    arrTemp = [1, 2, 3, 4, 17, 18, 19, 20, 21, 22, 23, 24, 25, 5, 6, 7, 8, 26, 27, 28,
+                              29, 30, 31, 32, 33, 34, 9, 10, 11, 12, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+                              13, 14, 15, 16, 44, 45, 46, 47, 48, 49, 50, 51, 52]
+
+                    var n = 0;
+                    var index = 0;
+                    var arrR = [0, 1, 2, 3];
+                    for (var j = 0; j < Math.trunc(count / 13) ; j++) {
+                        n = arrR[Math.floor(Math.random() * arrR.length)];
+                        var del = arrR.indexOf(n);
+                        arrR.splice(del, 1);
+                        for (var i = 0; i < 13; i++) {
+                            allPool[index] = arrTemp[i + 13 * n];
+                            index++;
+                        }
+                    }
+                    if (arrR.length > 0) {
+                        n = arrR[Math.floor(Math.random() * arrR.length)];
+                    } else {
+                        n = 0;
+                    }
+                    for (var i = 0; i < count % 13; i++) {                        
+                        allPool[index] = arrTemp[i + 13 * n];
+                        index++;
+                    }
+
+
+                    for (var t = 0; t < count; t++) {
+                        var rand = allPool[Math.floor(Math.random() * allPool.length)];
+                        var del = allPool.indexOf(rand);
+                        allPool.splice(del, 1);
+                        array[t] = rand;
+                    }                    
+                }
         
         return array;
     }    
@@ -296,6 +341,9 @@
 
         if (first == "0") {
             $("audio")[2].play();
+            var rank = Number($("#attempts").text());
+            rank++;
+            $("#attempts").text(rank);
 
             first = card;            
                                          
@@ -303,12 +351,16 @@
             t[str].style.backgroundImage = "url(/images/cards/deck" + num + "/" + card + ".png)";
             elem.classList.toggle("flip");
             
+            if (nameGame == "Street" && (card - 17) % 9 != 0) {
+                first = "0";
+                $("audio")[4].play();
+                second = "1";
+                setTimeout(function () { back(elem, numBack) }, 800);
+                return first;
+            }
+
             elem.id = "good" + len;            
             
-            var rank = Number($("#attempts").text());
-            rank++;
-            $("#attempts").text(rank);
-
             return first;
         }
         else {          
@@ -321,9 +373,9 @@
             elem.classList.toggle("flip");
 
             if (nameGame == "Quads") {
-                if (card <= 16 && first <= 16 && (card % 4 == first % 4) && num < 11 || 
-                   (card > 16 && first > 16 && (card % 9 == first % 9) && num < 11) || (first > 52 && card > 52)
-                    || (num == 4 && Math.abs(first - card) <= 3) && first % 4 == card % 4
+                if ((card <= 16 && first <= 16 && (card % 4 == first % 4) && num < 11 || 
+                   (card > 16 && first > 16 && (card % 9 == first % 9) && num < 11) || (first > 52 && card > 52)) && num != 5
+                    || (num == 5 && Math.trunc((first - 1)/ 4) == Math.trunc((card - 1)/ 4))
                     || (num > 10 && first % 3 == card % 3)) {
                     $("audio")[3].play();
 
@@ -346,6 +398,13 @@
                             clearInterval(intervalHandler);
                             time = 0;
                             $("audio")[1].play();
+
+                            var val = $("#setLvl").val();
+                            if (val[0] < 9) {
+                                var arr = ["1 (4x4)", "2 (4x5)", "3 (4x6)", "4 (5x6)", "5 (6x6)", "6 (6x7)", "7 (6x8)", "8 (7x8)"];
+                                $("#setLvl").val(arr[val[0]]);
+                                setTimeout(startGame, 10000);
+                            }
                         }
                     }
                     return first;
@@ -353,39 +412,78 @@
                 else {
                     $("audio")[4].play();
                     second = "1";
-                    setTimeout(function () { back(elem, numBack) }, 1000);
+                    setTimeout(function () { back(elem, numBack) }, 800);
                     return first;
                 }
             }
 
+            if (nameGame == "Street") {                
+                if ((first == card - 1) || (first == 25 && card == 1) || 
+                   (first == 34 && card == 5) || (first == 43 && card == 9) || (first == 52 && card == 13)) {
+                    $("audio")[3].play();
+                    first = card;
+                    elem.id = "good" + len;
+                    rate++;
 
-            if (card != first) {
-                $("audio")[4].play();
-                second = "1";
-                setTimeout(function () { back(elem, numBack) }, 1000);                
-                return first;
-            }
-            else {
-                $("audio")[3].play();
-                var rank = Number($("#open").text());
-                rank++;
-                $("#open").text(rank);
-                elem.id = "good" + len;
-                first = "0";
+                    if (rate == 13) {
+                        var rank = Number($("#open").text());
+                        rank++;
+                        $("#open").text(rank);
 
-                if (count / 2 == rank) {
-                    clearInterval(intervalHandler);
-                    time = 0;
-                    $("audio")[1].play();
-                    
-                    var val = $("#setLvl").val();
-                    if (val[0] < 9) {                        
-                        var arr = ["1 (4x4)", "2 (4x5)", "3 (4x6)", "4 (5x6)", "5 (6x6)", "6 (6x7)", "7 (6x8)", "8 (7x8)"];
-                        $("#setLvl").val(arr[val[0]]);
-                        setTimeout(startGame, 10000);
+                        first = "0";
+                        rate = 1;
+                        if (Math.trunc(count / 13) == rank) {
+                            clearInterval(intervalHandler);
+                            time = 0;
+                            $("audio")[1].play();
+
+                            var val = $("#setLvl").val();
+                            if (val[0] < 9) {
+                                var arr = ["1 (4x4)", "2 (4x5)", "3 (4x6)", "4 (5x6)", "5 (6x6)", "6 (6x7)", "7 (6x8)", "8 (7x8)"];
+                                $("#setLvl").val(arr[val[0]]);
+                                setTimeout(startGame, 10000);
+                            }
+                        }
                     }
+                    return first;
                 }
-                return first;
+                else {
+                    $("audio")[4].play();
+                    second = "1";
+                    setTimeout(function () { back(elem, numBack) }, 800);
+                    return first;
+                }                    
+            }
+
+            if (nameGame == "Classic") {
+                if (card != first) {
+                    $("audio")[4].play();
+                    second = "1";
+                    setTimeout(function () { back(elem, numBack) }, 800);
+                    return first;
+                }
+                else {
+                    $("audio")[3].play();
+                    var rank = Number($("#open").text());
+                    rank++;
+                    $("#open").text(rank);
+                    elem.id = "good" + len;
+                    first = "0";
+
+                    if (count / 2 == rank) {
+                        clearInterval(intervalHandler);
+                        time = 0;
+                        $("audio")[1].play();
+
+                        var val = $("#setLvl").val();
+                        if (val[0] < 9) {
+                            var arr = ["1 (4x4)", "2 (4x5)", "3 (4x6)", "4 (5x6)", "5 (6x6)", "6 (6x7)", "7 (6x8)", "8 (7x8)"];
+                            $("#setLvl").val(arr[val[0]]);
+                            setTimeout(startGame, 10000);
+                        }
+                    }
+                    return first;
+                }
             }
         }
     }
