@@ -382,7 +382,7 @@ input[type=radio] {
 }
 
 .clear {
-    clear: left;
+    clear: left;    
 }
 
 
@@ -405,7 +405,7 @@ figure {
     height: 100%;
     position: absolute;    
     display: block;
-    backface-visibility: hidden; 
+    backface-visibility: hidden;             
 }
 
 .back {
@@ -479,7 +479,7 @@ figure {
   font-weight: bold;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  box-sizing: border-box;  
 }
 .flipswitch-inner:before {
   content: "ON";
