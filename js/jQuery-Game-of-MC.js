@@ -405,7 +405,7 @@
                             var val = $("#setLvl").val();
                             if (val[0] < 9) {
                                 var arr = ["1 (4x4)", "2 (4x5)", "3 (4x6)", "4 (5x6)", "5 (6x6)", "6 (6x7)", "7 (6x8)", "8 (7x8)"];
-                                $("#setLvl").val(arr[val[0]]);
+                                $("#setLvl").val(arr[val[0]]);                                
                                 setTimeout(startGame, 10000);
                             }
                         }
@@ -443,7 +443,7 @@
                             var val = $("#setLvl").val();
                             if (val[0] < 9) {
                                 var arr = ["1 (4x4)", "2 (4x5)", "3 (4x6)", "4 (5x6)", "5 (6x6)", "6 (6x7)", "7 (6x8)", "8 (7x8)"];
-                                $("#setLvl").val(arr[val[0]]);
+                                $("#setLvl").val(arr[val[0]]);                                
                                 setTimeout(startGame, 10000);
                             }
                         }
@@ -481,7 +481,7 @@
                         var val = $("#setLvl").val();
                         if (val[0] < 9) {
                             var arr = ["1 (4x4)", "2 (4x5)", "3 (4x6)", "4 (5x6)", "5 (6x6)", "6 (6x7)", "7 (6x8)", "8 (7x8)"];
-                            $("#setLvl").val(arr[val[0]]);
+                            $("#setLvl").val(arr[val[0]]);                            
                             setTimeout(startGame, 10000);
                         }
                     }
@@ -531,7 +531,7 @@
     function settings() {
         $("audio")[5].play();
 
-        clearInterval(intervalHandler);
+        clearInterval(intervalHandler);        
         time = 0;
         $("#time").text("00:00");
 

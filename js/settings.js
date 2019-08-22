@@ -16,7 +16,7 @@
 
     var rad = $("input[name=radio-3]:checked").val();
     if (rad != undefined) {
-        $("section").css("background-image", "url(images/background/" + rad + ".png");        
+        $("section").css("background-image", "url(images/background/" + rad + ".jpg");        
         if (isNumber(rad)) {
             $("section").css("background-size", "cover");
         } else {
@@ -26,7 +26,7 @@
 
     var rad = $("input[name=radio-4]:checked").val();
     if (rad != undefined) {
-        $("aside").css("background-image", "url(images/background/" + rad + ".png");
+        $("aside").css("background-image", "url(images/background/" + rad + ".jpg");
         if (isNumber(rad)) {
             $("aside").css("background-size", "cover");
         } else {
@@ -36,7 +36,7 @@
 
     var rad = $("input[name=radio-5]:checked").val();
     if (rad != undefined) {
-        $("#border").css("background-image", "url(images/background/" + rad + ".png");
+        $("#border").css("background-image", "url(images/background/" + rad + ".jpg");
         if (isNumber(rad)) {
             $("#border").css("background-size", "cover");
         } else {
